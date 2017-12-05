@@ -141,6 +141,9 @@
     },
     "C2VMImageSKU": {
       "type": "string",
+      "allowedValues": [
+        "2016-Datacenter"
+      ],
       "metadata": {
         "description": "Deploys C2 VM. Windows 2016 Server OS is deployed"
       },
@@ -159,6 +162,9 @@
     },
     "ATAVMImageSKU": {
       "type": "string",
+      "allowedValues": [
+        "2016-Datacenter"
+      ],
       "metadata": {
         "description": "Deploys ATA VM. Windows 2016 Server OS is deployed"
       },
