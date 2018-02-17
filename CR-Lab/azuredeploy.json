@@ -44,7 +44,8 @@
       "type": "string",
       "allowedValues": [
         "2012-R2-Datacenter",
-        "2016-Datacenter"
+        "2016-Datacenter",
+        "2008-R2-SP1"
       ],
       "metadata": {
         "description": "Choose OS type for Domain  Controller"
@@ -55,7 +56,8 @@
       "type": "string",
       "allowedValues": [
         "2012-R2-Datacenter",
-        "2016-Datacenter"
+        "2016-Datacenter",
+        "2008-R2-SP1"
       ],
       "metadata": {
         "description": "Choose OS type for DC2 Server"
