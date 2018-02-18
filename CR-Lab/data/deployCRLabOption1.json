@@ -50,7 +50,7 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('dc1VMName'),'/deployCRLabOption1')]",
+      "name": "[concat(parameters('dc1VMName'),'/deployCRLab')]",
       "comments": "deploy OUs and User accounts via Script extension",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[resourceGroup().location]",
