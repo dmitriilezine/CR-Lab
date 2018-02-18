@@ -62,7 +62,7 @@
       },
       "defaultValue": "2016-Datacenter"
     },
-    "deployCRLabOption1": {
+    "deployCRLab": {
       "type": "string",
       "defaultValue": "No",
       "allowedValues": [
@@ -70,18 +70,7 @@
         "Yes"
       ],
       "metadata": {
-        "description": "This option will create OUs, security groups, 250+ user accounts and assign them with different permissions."
-      }
-    },
-    "deployCRLabOption2": {
-      "type": "string",
-      "defaultValue": "No",
-      "allowedValues": [
-        "No",
-        "Yes"
-      ],
-      "metadata": {
-        "description": "This option will create CR training class OUs/Gropus/Users/GPOs."
+        "description": "This will create OUs, Security groups, User accounts and assign them with different permissions."
       }
     },
     "deployAppServer1": {
@@ -241,7 +230,7 @@
     "c2VmDeploymentId": "[concat('Microsoft.Resources/deployments/', variables('c2VmDeployment'))]",
     "ataVmDeployment": "CreateATAVM",
     "ataVmDeploymentId": "[concat('Microsoft.Resources/deployments/', variables('ataVmDeployment'))]",
-    "lab1viaKeyvaultDeployment": "deployCRLabOption1",
+    "lab1viaKeyvaultDeployment": "deployCRLab",
     "lab1viaKeyvaultDeploymentId": "[concat('Microsoft.Resources/deployments/', variables('lab1viaKeyvaultDeployment'))]",
     "lab2viaKeyvaultDeployment": "deployCRLabOption2",
     "lab2viaKeyvaultDeploymentId": "[concat('Microsoft.Resources/deployments/', variables('lab2viaKeyvaultDeployment'))]",
@@ -692,8 +681,8 @@
       }
     },
     {
-      "condition": "[equals(parameters('deployCRLabOption1'),'Yes')]",
-      "comments": "deploy CR Lab Option 1",
+      "condition": "[equals(parameters('deployCRLab'),'Yes')]",
+      "comments": "deploy CR Lab",
       "name": "[variables('lab1viaKeyvaultDeployment')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -705,49 +694,6 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[variables('deployCRLabOption1TemplateURL')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "dc1VMName": {
-            "value": "[variables('dc1VMName')]"
-          },
-          "domainName": {
-            "value": "[parameters('domainName')]"
-          },
-          "adminUsername": {
-            "value": "[parameters('adminUsername')]"
-          },
-          "adminPassword": {
-            "value": "[parameters('adminPassword')]"
-          },
-          "assetLocationStorageAccount": {
-            "value": "[variables('assetLocationStorageAccount')]"
-          },
-          "storageAccountKeyviaKeyvault": {
-            "reference": {
-              "keyVault": {
-                "id": "[variables('keyVaultID')]"
-              },
-              "secretName": "[variables('secretName')]"
-            }
-          }
-        }
-      }
-    },
-    {
-      "condition": "[equals(parameters('deployCRLabOption2'),'Yes')]",
-      "comments": "deploy CR Lab Option 2",
-      "name": "[variables('lab2viaKeyvaultDeployment')]",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "dependsOn": [
-        "[variables('deployPrimaryAdId')]",
-        "[variables('deployDC2AdId')]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('deployCRLabOption2TemplateURL')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
