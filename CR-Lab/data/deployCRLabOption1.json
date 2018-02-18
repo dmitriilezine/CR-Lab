@@ -41,7 +41,7 @@
   },
   "variables": {
     "psScriptURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/ExtendAD-CRLab.ps1')]",
-    "psScriptZipPackage1URL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/extendADoption1.zip')]",
+    "psScriptZipPackageURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/extendADoption1.zip')]",
     "psScriptZipPackage2URL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/extendADoption2.zip')]",
     "ouold": "[concat('CN=Users,DC=contoso,DC=com')]",
     "ou": "[concat('DC=contoso,DC=com')]",
@@ -63,7 +63,7 @@
         "settings": {
           "fileUris": [
             "[variables('psScriptURL')]",
-            "[variables('psScriptZipPackage1URL')]",
+            "[variables('psScriptZipPackageURL')]",
             "[variables('psScriptZipPackage2URL')]"
           ]
         },
